@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
+import { useCounter2Store } from './stores/counter2';
+const counterStore = useCounter2Store();
 </script>
 
 <template>
@@ -9,6 +11,13 @@ import HelloWorld from './components/HelloWorld.vue'
 
     <div class="wrapper">
       <HelloWorld msg="Vite & Vue3 & TS" />
+
+      <div>
+        <p>Count: {{ counterStore.count }}</p>
+        <p>Double: {{ counterStore.doubleCount }}</p>
+        <p>Triple: {{ counterStore.tripleCount }}</p>
+        <button @click="counterStore.countUp()">Count UP!</button>
+      </div>
 
       <nav>
         <RouterLink to="/">Home</RouterLink>
